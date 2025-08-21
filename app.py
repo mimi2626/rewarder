@@ -1,3 +1,4 @@
+import os
 import json
 from datetime import datetime
 from flask import Flask, request
@@ -23,11 +24,12 @@ def save_rewards(rewards):
 @app.route("/", methods=["POST"])
 def home():
     data = request.json
+    print(data)
     if data.get("type") == "scored" and data.get("task", {}).get("type") == "reward":
         reward_entry = {
             "time": datetime.now().strftime("%d/%m, %H:%M"),
             "reward": data["task"]["text"],
-            "cost": -round(data["delta"]),
+            "cost": data["task"]["value"],
         }
         rewards = read_rewards()
         rewards.append(reward_entry)
@@ -37,4 +39,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
