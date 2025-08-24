@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Aboreto');
+
+body {
+    font-family: 'Aboreto', sans-serif;
+    text-align: center;
+    background-color: #fffaf0;
+
+    .container {
+        margin-top: 40px;
+        width: 20%;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            width: 90% !important;
+            font-weight: bold;
+        }
+    }
+}
+
+h1 {
+    color: #6133b4;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    position: relative;
+    font-size: clamp(8px, 4vw, 48px);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+h1::before,
+h1::after {
+    content: "✨";
+    margin: 0 10px;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 20%;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+th {
+    background-color: #6133b4;
+    color: white;
+}
+
+tr:hover {
+    background-color: #d5c8ff;
+}
+
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    margin: 8px;
+    cursor: pointer;
+    background-color: #6133b4;
+    /* soft red */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+    background-color: #432b74;
+    /* darker on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}

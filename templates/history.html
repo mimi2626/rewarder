@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Habitica Rewards</title>
+</head>
+
+<body>
+    <h1>Rewards History</h1>
+    {% if rewards %}
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Reward</th>
+            <th>Cost</th>
+        </tr>
+        {% for r in rewards %}
+        <tr>
+            <td>{{ r.time }}</td>
+            <td>{{ r.reward }}</td>
+            <td>{{ r.cost }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No rewards yet.</p>
+    {% endif %}
+    <br />
+    <form action="/" method="get">
+        <button type="submit">Back</button>
+    </form>
+</body>
+
+
+</html>
