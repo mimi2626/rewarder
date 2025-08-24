@@ -3,11 +3,19 @@ import json
 from datetime import datetime
 from flask import Flask, request, render_template, send_file
 from zoneinfo import ZoneInfo
+import sys
+
+if len(sys.argv) > 1:
+    debug = sys.argv[1]
+else:
+    debug = False
 
 
 app = Flask(__name__)
 
 log_file = "/data/rewards_log.ndjson"
+if debug:
+    log_file = "data/rewards_log.ndjson"
 
 
 # --- Helpers ---
@@ -35,12 +43,7 @@ def save_reward(reward_entry):
 
 @app.route("/", methods=["GET"])
 def homepage():
-    return """
-        <h1>Habitica Webhook Receiver</h1>
-        <form action="/history" method="get">
-            <button type="submit">View History</button>
-        </form>
-    """
+    return render_template("home.html")
 
 
 @app.route("/", methods=["POST"])
@@ -79,4 +82,4 @@ def download_rewards():
 # --- Run ---
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)), debug=debug)

@@ -1,3 +1,5 @@
 habitica-user-data.json
 __pycache__*
 rewards_log.json
+.DS_Store
+data
