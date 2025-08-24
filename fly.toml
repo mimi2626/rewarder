@@ -20,5 +20,5 @@ primary_region = 'lhr'
   size = 'shared-cpu-1x'
 
 [mounts]
-  source="my_data"
+  source="rewards_data"
   destination="/data"

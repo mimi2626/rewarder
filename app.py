@@ -75,10 +75,30 @@ def view_rewards():
         </table>
         <br>
         <a href="/"><button>Back</button></a>
+        <form action="/download" method="get">
+            <button type="submit">Download JSON</button>
+        </form>
+        <a href="/"><button>Back</button></a>
     </body>
     </html>
     """
     return html, 200
+
+
+from flask import send_file
+
+
+@app.route("/download", methods=["GET"])
+def download_rewards():
+    if not os.path.exists(log_file):
+        return "No reward log found.", 404
+    # Serve the file for download
+    return send_file(
+        log_file,
+        as_attachment=True,
+        download_name="rewards_log.ndjson",
+        mimetype="application/json",
+    )
 
 
 # --- Run ---
