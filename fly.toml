@@ -18,3 +18,7 @@ primary_region = 'lhr'
 
 [[vm]]
   size = 'shared-cpu-1x'
+
+[mounts]
+  source="my_data"
+  destination="/data"
