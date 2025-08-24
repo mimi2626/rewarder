@@ -1,7 +1,7 @@
 import os
 import json
 from datetime import datetime
-from flask import Flask, request
+from flask import Flask, request, render_template, send_file
 from zoneinfo import ZoneInfo
 
 app = Flask(__name__)
@@ -60,31 +60,7 @@ def webhook():
 @app.route("/history", methods=["GET"])
 def view_rewards():
     rewards = read_rewards()
-    table_rows = "".join(
-        f"<tr><td>{r['time']}</td><td>{r['reward']}</td><td>{r['cost']}</td></tr>"
-        for r in rewards
-    )
-    html = f"""
-    <html>
-    <head><title>Habitica Rewards</title></head>
-    <body>
-        <h1>Reward History</h1>
-        <table border="1" cellpadding="5" cellspacing="0">
-            <tr><th>Time</th><th>Reward</th><th>Cost</th></tr>
-            {table_rows}
-        </table>
-        <br>
-        <form action="/download" method="get">
-            <button type="submit">Download JSON</button>
-        </form>
-        <a href="/"><button>Back</button></a>
-    </body>
-    </html>
-    """
-    return html, 200
-
-
-from flask import send_file
+    return render_template("history.html", rewards=rewards)
 
 
 @app.route("/download", methods=["GET"])
