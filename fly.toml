@@ -19,7 +19,7 @@ primary_region = 'lhr'
 [[vm]]
   size = 'shared-cpu-1x'
   mounts = [
-    { source = "rewards_data", destination = "/data", processes= ["app"]}
+    { source = "rewards_data", destination = "/data"}
   ]
 
 [mounts]
