@@ -74,7 +74,6 @@ def view_rewards():
             {table_rows}
         </table>
         <br>
-        <a href="/"><button>Back</button></a>
         <form action="/download" method="get">
             <button type="submit">Download JSON</button>
         </form>
