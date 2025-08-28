@@ -1,7 +1,7 @@
 import os
 import json
 from datetime import datetime
-from flask import Flask, request, render_template, send_file
+from flask import Flask, request, render_template, send_file, redirect
 from zoneinfo import ZoneInfo
 
 app = Flask(__name__)
@@ -68,6 +68,25 @@ def download_rewards():
         download_name="rewards_log.ndjson",
         mimetype="application/json",
     )
+
+
+@app.route("/clear_confirm")
+def clear_confirm():
+    return render_template("clear_confirm.html")
+
+
+@app.route("/clear", methods=["POST"])
+def clear_history():
+    password = request.form.get("password")
+
+    if password == "mimi":
+        with open(log_file, "w") as f:
+            pass
+        return redirect("/history")
+    else:
+        # Invalid confirmation, re-render the form with an error
+        error_message = "Invalid confirmation word or password."
+        return render_template("clear_confirm.html", error=error_message)
 
 
 # --- Run ---

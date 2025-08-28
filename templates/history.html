@@ -32,6 +32,9 @@
     <form action="/download" method="get">
         <button type="submit">Download History</button>
     </form>
+    <a href="{{ url_for('clear_confirm') }}">
+        <button>Clear History</button>
+    </a>
     <form action="/" method="get">
         <button type="submit">Back</button>
     </form>
