@@ -11,16 +11,14 @@
 <body>
     <form action="/clear" method="post">
         <h2>Confirm Clear History</h2>
-        <p>To confirm, type the word 'DELETE' and enter your password:</p>
-
-        <label for="confirm_word">Confirmation Word:</label>
-        <input type="text" id="confirm_word" name="confirm_word" required>
+        <p>Are you sure you want to clear the current reward history? This cannot be undone.</p>
+        <p>To confirm, type your password:</p>
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
 
         {% if error %}
-        <p style="color:red;">{{ error }}</p>
+        <p>{{ error }}</p>
         {% endif %}
 
         <button type="submit">Clear History</button>

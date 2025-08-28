@@ -85,7 +85,7 @@ def clear_history():
         return redirect("/history")
     else:
         # Invalid confirmation, re-render the form with an error
-        error_message = "Invalid confirmation word or password."
+        error_message = "Invalid password."
         return render_template("clear_confirm.html", error=error_message)
 
 
