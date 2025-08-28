@@ -3,20 +3,11 @@ import json
 from datetime import datetime
 from flask import Flask, request, render_template, send_file
 from zoneinfo import ZoneInfo
-import sys
-
-# if len(sys.argv) > 1:
-#     debug = sys.argv[1]
-# else:
-debug = False
-
 
 app = Flask(__name__)
 
+# abs path
 log_file = "/data/rewards_log.ndjson"
-if debug:
-    log_file = "data/rewards_log.ndjson"
-
 
 # --- Helpers ---
 
@@ -82,4 +73,4 @@ def download_rewards():
 # --- Run ---
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)), debug=debug)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
