@@ -21,18 +21,6 @@ primary_region = 'fra'
   processes = ['app']
 
 [[vm]]
-<<<<<<< HEAD
-  size = 'shared-cpu-1x'
-  mounts = [
-    { source = "rewards_data", destination = "/data"}
-  ]
-
-[mounts]
-  source="rewards_data"
-  destination="/data"
-  processes= ["app"]
-=======
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
->>>>>>> 66aec50 (survived deployment w abd path)
