@@ -5,10 +5,10 @@ from flask import Flask, request, render_template, send_file
 from zoneinfo import ZoneInfo
 import sys
 
-if len(sys.argv) > 1:
-    debug = sys.argv[1]
-else:
-    debug = False
+# if len(sys.argv) > 1:
+#     debug = sys.argv[1]
+# else:
+debug = False
 
 
 app = Flask(__name__)
